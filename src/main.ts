@@ -6,4 +6,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(AppComponent);
+bootstrap(AppComponent).catch(function(error){
+	console.log(error);
+});

@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<h3>Todo List in Angular 2</h3>
+			<hr>
+			<div>
+				<form  (submit)="addTask($event)" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">TODO:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="Enter a Task" [(ngModel)]="newTodo">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">Add Task</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<hr>
+			<div class="alert" *ngFor="let todo of todoList let i=index" [ngClass]="{'alert-success': !todo.complete, 'alert-danger': todo.complete}">
+				<input type="checkbox" name="checkTask" [(ngModel)]="todo.complete">&nbsp;
+				<b [ngClass]="{'checked': todo.complete}">{{ todo.task }}</b>
+				<button class="close" type="button" (click)="deleteTask(i)">&times;</button>
+			</div>
+		</div>
+	</div>
+</div>
